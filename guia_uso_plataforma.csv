@@ -1,0 +1,5 @@
+Categoria,Problema_O_Componente,Solucion_O_Especificacion
+Requisitos Tecnicos,Conexion a Internet,Minimo 5 Mbps para streaming en definicion estandar (480p) y 10 Mbps o mas para alta definicion (1080p).
+Requisitos Tecnicos,Navegadores Soportados,"Google Chrome, Mozilla Firefox, Safari y Microsoft Edge en sus versiones mas recientes."
+Troubleshooting,El video no carga o se congela,1. Bajar la resolucion en el engrane. 2. Borrar cache del navegador. 3. Desactivar AdBlockers.
+Troubleshooting,Problemas de acceso / Contraseña,"Ir a iniciar sesion, clic en '¿Olvidaste tu contraseña?', ingresar correo. Revisar Spam si no llega en 5 minutos."
