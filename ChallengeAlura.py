@@ -30,7 +30,7 @@ def cargar_y_procesar_csvs():
             'metadata_cols': ['Categoria']
         },
         'guia_uso_plataforma.csv': {
-            'texto_cols': ['Categoria', 'Problema_O_Componente', 'Solucion_O_Specification'],
+            'texto_cols': ['Categoria', 'Problema_O_Componente', 'Solucion_O_Especificacion'], # CORREGIDO: Especificacion
             'metadata_cols': ['Categoria']
         },
         'politica_reembolso.csv': {
@@ -76,5 +76,5 @@ def cargar_y_procesar_csvs():
             # Creación del objeto Document de LangChain
             documentos.append(Document(page_content=contenido_texto, metadata=metadata))
             
-    print(f"✅ Total de registros cargados y convertidos en documentos: {len(documentos)}")
+    print(f"Total de registros cargados y convertidos en documentos: {len(documentos)}")
     return documentos

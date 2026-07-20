@@ -1,6 +1,7 @@
 # =====================================================================
 # 4. EJECUCIÓN / INTERFAZ DE CONSOLA
 # =====================================================================
+
 if __name__ == "__main__":
     # Asegúrate de haber definido tu OPENAI_API_KEY en tu entorno antes de correr el script
     if "OPENAI_API_KEY" not in os.environ:
