@@ -82,35 +82,24 @@ set GOOGLE_API_KEY=tu_api_key_aqui
 ```bash
 python3 app.py
 ```
-
 ## Ejemplos de Preguntas y Respuestas
-* **Ejemplo 1:** Consulta sobre Políticas de Reembolso
 
-    Estudiante: ¿Cuál es el plazo máximo para pedir un reembolso?
+### Ejemplo 1: Consulta sobre Políticas de Reembolso
+* **Estudiante:** ¿Cuál es el plazo máximo para pedir un reembolso?
+* **Agente:** De acuerdo con la política de reembolso de la plataforma, el plazo máximo para solicitar un reembolso completo es dentro de los primeros 7 días naturales posteriores a la fecha de compra del curso.
 
-    Agente:
+### Ejemplo 2: Consulta sobre Certificados y Cursos
+* **Estudiante:** ¿Qué requisitos necesito para obtener mi certificado de aprobación?
+* **Agente:** Para obtener tu certificado debes finalizar el 100% de las lecciones del curso y obtener una calificación mínima de 80/100 en el proyecto final o evaluación integradora.
 
-        De acuerdo con la política de reembolso de la plataforma, el plazo máximo para solicitar un reembolso completo es dentro de los primeros 7 días naturales posteriores a la fecha de compra del curso, siempre y cuando no hayas completado más del 20% del contenido.
+### Ejemplo 3: Consulta fuera de la documentación (Manejo de casos no cubiertos)
+* **Estudiante:** ¿Tienen clases presenciales en la Ciudad de México?
+* **Agente:** Hola. No poseo información sobre clases presenciales dentro de la documentación disponible, ya que nuestra oferta es 100% en línea. Te sugiero contactar directamente al equipo de soporte para obtener más detalles.
 
-* **Ejemplo 2:** Consulta sobre Certificados y Cursos
+---
 
-    Estudiante: ¿Qué requisitos necesito para obtener mi certificado de aprobación?
-
-    Agente:
-
-        Para obtener tu certificado debes finalizar el 100% de las lecciones del curso y obtener una calificación mínima de 80/100 en el proyecto final o evaluación integradora.
-
-* **Ejemplo 3:** Consulta fuera de la documentación (Manejo de casos no cubiertos)
-
-    Estudiante: ¿Tienen clases presenciales en la Ciudad de México?
-
-    Agente:
-
-        Hola. No poseo información sobre clases presenciales dentro de la documentación disponible, ya que nuestra oferta es 100% en línea. Te sugiero contactar directamente al equipo de soporte para obtener más detalles.
-
-### Capturas de Pantalla / Evidencias
+## Capturas de Pantalla / Evidencias
 
 ![Ejemplo de ejecución 1](ejemplo1.jpeg)
-
 
 ![Ejemplo de ejecución 2](ejemplo_salida.jpeg)
