@@ -13,10 +13,6 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
-# Configuración del API Key 
-os.environ["OPENAI_API_KEY"] = "AQ.Ab8RN6JRarqcNeZRyxizf4Z7yaUCmceM84wfx7JmNMh7XCgD0Q"
-llm = ChatOpenAI()
-
 # =====================================================================
 # 1. PROCESAMIENTO DE ARCHIVOS CSV
 # =====================================================================
