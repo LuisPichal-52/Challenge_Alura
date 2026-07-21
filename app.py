@@ -75,13 +75,14 @@ def cargar_y_procesar_csvs():
 # =====================================================================
 # 2. CREACIÓN DEL MOTOR DE BÚSQUEDA (VECTOR STORE)
 # =====================================================================
+from langchain_huggingface import HuggingFaceEmbeddings
 def crear_base_conocimiento(documentos):
     # Dado que los registros CSV suelen ser cortos, dividimos con precaución
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     docs_divididos = text_splitter.split_documents(documentos)
     
     # Usamos el modelo de embeddings gratuito de Google
-    embeddings = GoogleGenerativeAIEmbeddings(model="text-embedding-004")
+    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_store = FAISS.from_documents(docs_divididos, embeddings)
     
     # Recuperación de los 3 fragmentos más relevantes
@@ -92,8 +93,8 @@ def crear_base_conocimiento(documentos):
 # =====================================================================
 def inicializar_agente_educativo(retriever):
     # Instanciamos el modelo de lenguaje de manera óptima para el agente
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.2)
-    
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.2)    
+
     # Definimos el prompt del sistema dándole el rol y restricciones
     system_prompt = (
         "Eres un agente de IA experto y servicial para nuestra plataforma educativa.\n"
@@ -115,9 +116,15 @@ def inicializar_agente_educativo(retriever):
         
     # Construcción de la cadena usando LCEL (operadores nativos)
     # Esto elimina la necesidad de importar 'create_retrieval_chain'
+
+    #Se contrae el extracto del texto antes de buscar 
+    def get_context(inputs):
+        docs = retriever.invoke(inputs["input"])
+        return format_docs(docs)
+    
     rag_chain = (
         {
-            "context": retriever | format_docs, 
+            "context": get_context, 
             "input": lambda x: x["input"]
         }
         | prompt
