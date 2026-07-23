@@ -107,6 +107,6 @@ python3 app.py
 ## Demo en Vivo (Terminal en la Nube)
 Aquí se puede ver el agente ejecutándose en vivo en nuestra máquina de Google Cloud, ya que tuve problemas con OCI y no me dejo crear mi cuenta con ninguna tarjeta. 
 
-[Ver Terminal del Agente en Tmate](https://tmate.io/t/AYqKngMSkZ5SQxKXrVJfMATPY)
+[Ver Terminal del Agente en Tmate](https://retrieved-february-ultimate-quit.trycloudflare.com)
 
 ![Ejemplo de deploy](deploy_google_cloud.png)
