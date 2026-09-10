@@ -1,0 +1,66 @@
+import os
+from tkinter import Tk, Label, Entry, Button, Text, Scrollbar, END, filedialog
+from pypdf import PdfReader
+from docx import Document
+
+def buscar_palabra(palabra, ruta_carpeta):
+    resultados = []
+    palabra = palabra.lower()
+
+    for raiz, _, archivos in os.walk(ruta_carpeta):
+        for archivo in archivos:
+            ruta_completa = os.path.join(raiz, archivo)
+            texto = ""
+
+            try:
+                if archivo.endswith(".txt"):
+                    with open(ruta_completa, 'r', encoding='utf-8', errors='ignore') as f:
+                        texto = f.read()
+                elif archivo.endswith(".docx"):
+                    doc = Document(ruta_completa)
+                    texto = " ".join([p.text for p in doc.paragraphs])
+                elif archivo.endswith(".pdf"):
+                    lector = PdfReader(ruta_completa)
+                    texto = " ".join([pag.extract_text() for pag in lector.pages if pag.extract_text()])
+
+                if palabra in texto.lower():
+                    resultados.append(ruta_completa)
+            except Exception as e:
+                print(f"Error al leer {archivo}: {e}")
+
+    return resultados
+
+def ejecutar_busqueda():
+    palabra = entrada_palabra.get()
+    carpeta = filedialog.askdirectory(title="Selecciona la carpeta a buscar")
+    if not carpeta or not palabra:
+        return
+
+    cuadro_texto.delete(1.0, END)
+    cuadro_texto.insert(END, "Buscando...\n")
+
+    encontrados = buscar_palabra(palabra, carpeta)
+
+    cuadro_texto.delete(1.0, END)
+    if encontrados:
+        cuadro_texto.insert(END, f"Archivos encontrados con '{palabra}':\n\n")
+        for arch in encontrados:
+            cuadro_texto.insert(END, f"- {arch}\n")
+    else:
+        cuadro_texto.insert(END, "No se encontraron coincidencias.")
+
+# Interfaz gráfica
+root = Tk()
+root.title("Buscador de palabras en documentos")
+root.geometry("500x400")
+
+Label(root, text="Palabra a buscar:").pack(pady=5)
+entrada_palabra = Entry(root, width=40)
+entrada_palabra.pack(pady=5)
+
+Button(root, text="Seleccionar carpeta y buscar", command=ejecutar_busqueda).pack(pady=10)
+
+cuadro_texto = Text(root, wrap='word', width=60, height=18)
+cuadro_texto.pack(pady=5)
+
+root.mainloop()
